@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hoffmann Law Firm — Madrid</title>
+<meta name="description" content="Hoffmann Law Firm, Madrid. Advocate. Counsel. Protect.">
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --pale:#eef3f8;
+    --pale-2:#e2eaf3;
+    --navy:#0d1f3c;
+    --navy-soft:#455165;
+    --slate:#7c8794;
+    --gold:#a97c2e;
+    --gold-line:#c9a24b;
+    --line:rgba(13,31,60,0.12);
+    --serif:'Cormorant Garamond', serif;
+    --sans:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white); color:var(--navy-soft); font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-x:hidden;}
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--gold-line); color:var(--white);}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+  @media (max-width:640px){.wrap{padding:0 22px;}}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  .infobar{background:var(--navy); font-family:var(--mono); font-size:12px; letter-spacing:0.03em; color:#b9c2d1; padding:10px 0;}
+  .infobar .wrap{display:flex; gap:28px; flex-wrap:wrap; align-items:center;}
+  .infobar a:hover{color:var(--gold-line);}
+  .infobar .sep{color:rgba(255,255,255,0.2);}
+  @media (max-width:640px){.infobar{display:none;}}
+
+  header{position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  header .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 40px;}
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand img{height:44px; width:44px;}
+  .brand-text{font-family:var(--serif); line-height:1.15;}
+  .brand-text .name{font-size:19px; font-weight:600; letter-spacing:0.03em; color:var(--navy);}
+  .brand-text .tag{font-family:var(--mono); font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold);}
+  nav.links{display:flex; gap:36px;}
+  nav.links a{font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy-soft); position:relative; padding-bottom:4px;}
+  nav.links a::after{content:''; position:absolute; left:0; bottom:0; height:1px; width:0; background:var(--gold); transition:width .3s ease;}
+  nav.links a:hover{color:var(--navy);}
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{font-size:12px; letter-spacing:0.06em; text-transform:uppercase; background:var(--navy); padding:11px 22px; color:var(--white); transition:background .3s ease;}
+  .nav-cta:hover{background:var(--gold);}
+  .menu-btn{display:none; background:none; border:none; color:var(--navy); font-size:22px; cursor:pointer;}
+  @media (max-width:860px){nav.links{display:none;} .nav-cta{display:none;} .menu-btn{display:block;}}
+
+  /* ---------- HERO (light blue) ---------- */
+  .hero{
+    position:relative; padding:100px 0 90px; overflow:hidden;
+    background:linear-gradient(180deg, var(--pale) 0%, var(--white) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-columns{position:absolute; right:-40px; top:0; bottom:0; width:46%; opacity:0.55; pointer-events:none;}
+  .hero-columns svg{width:100%; height:100%;}
+  .hero-grain{position:absolute; inset:0; opacity:0.5; pointer-events:none; mix-blend-mode:multiply;}
+  .hero .wrap{position:relative; z-index:1; display:grid; grid-template-columns:1.15fr 0.85fr; gap:70px; align-items:center;}
+  .hero-eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:22px; display:flex; align-items:center; gap:14px;}
+  .hero-eyebrow::before{content:''; width:32px; height:1px; background:var(--gold);}
+  h1.hero-title{font-family:var(--serif); font-weight:500; font-size:clamp(38px, 4.6vw, 60px); line-height:1.14; color:var(--navy);}
+  h1.hero-title .accent{font-style:italic; color:var(--gold);}
+  .hero-sub{margin-top:26px; max-width:520px; font-size:16px; line-height:1.75; color:var(--navy-soft);}
+  .hero-actions{margin-top:38px; display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
+  .btn-primary{background:var(--navy); color:var(--white); padding:15px 30px; font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; transition:background .3s ease;}
+  .btn-primary:hover{background:var(--gold);}
+  .btn-ghost{font-size:13px; letter-spacing:0.05em; text-transform:uppercase; color:var(--navy-soft); border-bottom:1px solid var(--line); padding-bottom:3px;}
+  .btn-ghost:hover{color:var(--navy); border-color:var(--gold);}
+  .hero-photo{position:relative;}
+  .hero-photo .frame{position:relative; border-radius:3px; overflow:hidden; box-shadow:0 30px 70px -30px rgba(13,31,60,0.35);}
+  .hero-photo img{display:block; width:100%; height:520px; object-fit:cover;}
+  .hero-photo .ring{position:absolute; top:-26px; right:-26px; width:110px; height:110px; border:1px solid var(--gold-line); border-radius:50%; opacity:0.6; pointer-events:none;}
+  .hero-card{
+    position:absolute; left:-30px; bottom:-30px; max-width:290px; background:var(--white);
+    border:1px solid var(--line); padding:26px 28px; box-shadow:0 20px 46px -20px rgba(13,31,60,0.28);
+  }
+  .hero-card .emblem{width:36px; height:36px; margin-bottom:12px;}
+  .hero-card h3{font-family:var(--serif); font-weight:500; font-size:18px; color:var(--navy); margin-bottom:10px;}
+  .hero-card p{font-size:13px; line-height:1.6; color:var(--navy-soft);}
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-photo{max-width:520px;}
+    .hero-photo img{height:380px;}
+    .hero-card{position:static; margin-top:20px; max-width:none;}
+  }
+
+  section{padding:110px 0; position:relative;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:18px;}
+  h2.section-title{font-family:var(--serif); font-weight:500; font-size:clamp(30px,3.6vw,44px); line-height:1.16; max-width:720px; color:var(--navy);}
+  h2.section-title .accent{font-style:italic; color:var(--gold);}
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- PILLARS (white, hairline cards) ---------- */
+  .pillars-grid{margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .pillar{background:var(--white); padding:40px 34px;}
+  .pillar .num{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; color:var(--gold); margin-bottom:18px;}
+  .pillar h3{font-family:var(--serif); font-weight:500; font-size:26px; margin-bottom:12px; color:var(--navy);}
+  .pillar p{font-size:14px; line-height:1.7; color:var(--navy-soft);}
+  @media (max-width:860px){.pillars-grid{grid-template-columns:1fr;}}
+
+  /* ---------- PRACTICE (pale blue) ---------- */
+  .practice-section{
+    position:relative; background:var(--pale); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .practice-section::before{
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:0.6;
+    background:repeating-linear-gradient(90deg, rgba(13,31,60,0.02) 0px, rgba(13,31,60,0.02) 1px, transparent 1px, transparent 90px);
+  }
+  .practice-section .wrap{position:relative; z-index:1;}
+  .docket-list{margin-top:60px; border-top:1px solid var(--line);}
+  .docket-item{border-bottom:1px solid var(--line); display:grid; grid-template-columns:110px 1fr 36px; align-items:start; padding:28px 0; cursor:pointer; transition:background .3s ease;}
+  .docket-item:hover{background:rgba(13,31,60,0.03);}
+  .docket-no{font-family:var(--mono); font-size:12px; color:var(--gold); letter-spacing:0.04em;}
+  .docket-main h3{font-family:var(--serif); font-weight:500; font-size:clamp(20px,2.2vw,24px); color:var(--navy); transition:color .3s ease;}
+  .docket-item:hover .docket-main h3{color:var(--gold);}
+  .docket-body{max-height:0; overflow:hidden; transition:max-height .5s ease, opacity .4s ease, margin-top .4s ease; opacity:0; grid-column:2/3;}
+  .docket-item.open .docket-body{max-height:280px; opacity:1; margin-top:10px;}
+  .docket-body p{font-size:14px; line-height:1.7; color:var(--navy-soft); max-width:560px;}
+  .docket-toggle{font-family:var(--mono); font-size:18px; color:var(--slate); text-align:right; transition:transform .4s ease, color .3s ease;}
+  .docket-item.open .docket-toggle{transform:rotate(45deg); color:var(--gold);}
+  @media (max-width:640px){.docket-item{grid-template-columns:50px 1fr 24px;}}
+
+  /* ---------- ABOUT (white) ---------- */
+  .about{position:relative; overflow:hidden;}
+  .about-watermark{position:absolute; right:-80px; top:50%; transform:translateY(-50%); width:420px; height:420px; opacity:0.05; pointer-events:none;}
+  .about-inset{width:100%; max-width:380px; margin-top:32px; border-radius:2px; box-shadow:0 20px 46px -24px rgba(13,31,60,0.3);}
+  .about .grid{position:relative; z-index:1; display:grid; grid-template-columns:0.9fr 1.1fr; gap:90px; align-items:start;}
+  .about p.lede{font-family:var(--serif); font-weight:500; font-style:italic; font-size:clamp(22px,2.2vw,28px); line-height:1.5; color:var(--navy);}
+  .about .notes{display:flex; flex-direction:column; gap:30px;}
+  .about .note{padding-left:20px; border-left:2px solid var(--gold);}
+  .about .note h4{font-family:var(--sans); font-weight:600; font-size:14px; letter-spacing:0.02em; margin-bottom:8px; color:var(--navy);}
+  .about .note p{font-size:14px; line-height:1.65; color:var(--navy-soft);}
+  @media (max-width:860px){.about .grid{grid-template-columns:1fr; gap:46px;}}
+
+  /* ---------- CONTACT (pale blue) ---------- */
+  .contact{background:var(--pale); border-top:1px solid var(--line);}
+  .contact .grid{display:grid; grid-template-columns:1.2fr 1fr; gap:70px; align-items:end;}
+  .contact h2{font-family:var(--serif); font-weight:500; font-size:clamp(30px,3.8vw,46px); line-height:1.14; color:var(--navy);}
+  .contact h2 .accent{font-style:italic; color:var(--gold);}
+  .contact-details{display:flex; flex-direction:column; gap:20px;}
+  .contact-details .row{border-bottom:1px solid var(--line); padding-bottom:14px;}
+  .contact-details .label{font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); margin-bottom:6px;}
+  .contact-details .value{font-size:15px; color:var(--navy);}
+  .contact-details a.value:hover{color:var(--gold);}
+  @media (max-width:860px){.contact .grid{grid-template-columns:1fr; gap:44px;}}
+
+  footer{padding:36px 0; border-top:1px solid var(--line); background:var(--white);}
+
+  /* ---------- OFFICE BANNER (full-bleed photo) ---------- */
+  .office-banner{position:relative; min-height:440px; display:flex; align-items:center; overflow:hidden;}
+  .office-banner img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%;}
+  .office-banner::before{content:''; position:absolute; inset:0; background:linear-gradient(100deg, rgba(13,31,60,0.86) 0%, rgba(13,31,60,0.55) 45%, rgba(13,31,60,0.15) 80%);}
+  .office-banner .wrap{position:relative; z-index:1;}
+  .office-banner .eyebrow{color:var(--gold-line);}
+  .office-banner h2{font-family:var(--serif); font-weight:500; font-size:clamp(30px,4vw,46px); line-height:1.15; color:var(--white); max-width:560px;}
+  .office-banner h2 .accent{font-style:italic; color:var(--gold-line);}
+  .office-banner p{margin-top:20px; max-width:440px; font-size:15px; line-height:1.7; color:#cdd6e4;}
+
+  /* ---------- LITIGATION BAND (image + text) ---------- */
+  .litigation-band{background:var(--white); border-bottom:1px solid var(--line);}
+  .litigation-band .grid{display:grid; grid-template-columns:1fr 1fr; gap:0; align-items:stretch;}
+  .litigation-band .photo{position:relative; min-height:380px;}
+  .litigation-band .photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .litigation-band .copy{padding:60px 60px 60px 0; display:flex; flex-direction:column; justify-content:center;}
+  .litigation-band .copy h3{font-family:var(--serif); font-weight:500; font-size:clamp(26px,3vw,34px); color:var(--navy); line-height:1.2; margin-bottom:16px;}
+  .litigation-band .copy h3 .accent{font-style:italic; color:var(--gold);}
+  .litigation-band .copy p{font-size:15px; line-height:1.75; color:var(--navy-soft); max-width:420px;}
+  @media (max-width:860px){
+    .litigation-band .grid{grid-template-columns:1fr;}
+    .litigation-band .photo{min-height:280px;}
+    .litigation-band .copy{padding:44px 24px;}
+  }
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px;}
+  footer .fbrand{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:15px; letter-spacing:0.02em; color:var(--navy);}
+  footer .fbrand img{height:28px; width:28px;}
+  footer .flinks{display:flex; gap:24px; flex-wrap:wrap;}
+  footer .flinks a{font-size:12px; letter-spacing:0.05em; text-transform:uppercase; color:var(--navy-soft);}
+  footer .flinks a:hover{color:var(--gold);}
+  footer .fnote{font-size:11px; color:var(--slate); font-family:var(--mono);}
+</style>
+</head>
+<body>
+
+<div class="infobar">
+  <div class="wrap">
+    <a href="mailto:info@judyhoffmann.com">info@judyhoffmann.com</a>
+    <span class="sep">|</span>
+    <a href="https://wa.me/34603364865">Phone / WhatsApp: +34 603 36 48 65</a>
+    <span class="sep">|</span>
+    <span>Amador de los Ríos 11, 28010 Madrid, ES</span>
+  </div>
+</div>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <div class="brand">
+      <img src="assets/emblem.png" alt="Hoffmann Law Firm emblem">
+      <div class="brand-text">
+        <div class="name">Hoffmann Law Firm</div>
+        <div class="tag">Advocate &middot; Counsel &middot; Protect</div>
+      </div>
+    </div>
+    <nav class="links">
+      <a href="#pillars">Approach</a>
+      <a href="#practice">Practice</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Book a Consultation</a>
+    <button class="menu-btn" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-columns" aria-hidden="true">
+    <svg viewBox="0 0 500 700" preserveAspectRatio="xMaxYMid slice">
+      <defs>
+        <linearGradient id="colGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0d1f3c" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#0d1f3c" stop-opacity="0.05"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="600" x2="500" y2="600" stroke="#0d1f3c" stroke-opacity="0.14" stroke-width="2"/>
+      <g stroke="url(#colGrad)" stroke-width="2" fill="none">
+        <rect x="90" y="120" width="46" height="480"/>
+        <line x1="90" y1="150" x2="136" y2="150"/>
+        <line x1="90" y1="180" x2="136" y2="180"/>
+        <rect x="210" y="80" width="46" height="520"/>
+        <line x1="210" y1="112" x2="256" y2="112"/>
+        <line x1="210" y1="142" x2="256" y2="142"/>
+        <rect x="330" y="150" width="46" height="450"/>
+        <line x1="330" y1="180" x2="376" y2="180"/>
+        <line x1="330" y1="210" x2="376" y2="210"/>
+      </g>
+      <circle cx="253" cy="42" r="34" stroke="#c9a24b" stroke-opacity="0.35" stroke-width="1.5" fill="none"/>
+      <line x1="20" y1="60" x2="480" y2="60" stroke="#c9a24b" stroke-opacity="0.3" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-grain" aria-hidden="true">
+    <svg width="100%" height="100%">
+      <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.02 0"/></filter>
+      <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow">Hoffmann Law Firm &mdash; Madrid</div>
+      <h1 class="hero-title">Precision counsel for <span class="accent">high-stakes</span> matters.</h1>
+      <p class="hero-sub">Hoffmann Law Firm advises individuals, businesses, and families across corporate, financial, and property law — with particular depth in fraud, asset recovery, and complex cross-border disputes.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contact">Book a Consultation</a>
+        <a class="btn-ghost" href="#practice">View Practice Areas</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame">
+        <img src="assets/hero-consultation.jpg" alt="Judy Hoffmann meeting with clients at Hoffmann Law Firm">
+      </div>
+      <div class="ring" aria-hidden="true"></div>
+      <div class="hero-card">
+        <img class="emblem" src="assets/emblem.png" alt="">
+        <h3>Why clients choose us</h3>
+        <p>Direct access to Judy on every matter, confidential handling of sensitive financial and family matters, and cross-border reach across Spain and international jurisdictions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="wrap">
+    <div class="eyebrow">Advocate. Counsel. Protect.</div>
+    <h2 class="section-title">Three commitments <span class="accent">that guide</span> every matter we take.</h2>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h3>Advocate</h3>
+        <p>We represent your interests with clarity and conviction, in negotiation and in court, from the first meeting to final resolution.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h3>Counsel</h3>
+        <p>Every client gets a clear-eyed assessment of their options — the risks, the timeline, and the realistic path forward.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h3>Protect</h3>
+        <p>We safeguard what matters most to you: your family, your assets, and your standing, with discretion at every step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="practice-section" id="practice">
+  <div class="wrap">
+    <div class="eyebrow">Practice Areas</div>
+    <h2 class="section-title">Matters we handle <span class="accent">with care</span> and precision.</h2>
+    <div class="docket-list" id="docketList">
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 01</div>
+        <div class="docket-main">
+          <h3>Business &amp; Corporate Law</h3>
+          <div class="docket-body"><p>Company formation, governance, and compliance; shareholder and partnership agreements; mergers, acquisitions, and restructuring; and disputes between founders, partners, or investors.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 02</div>
+        <div class="docket-main">
+          <h3>Real Estate Law</h3>
+          <div class="docket-body"><p>Residential and commercial property transactions, due diligence, title review, lease negotiation, and litigation over boundaries, financing, or landlord-tenant disputes.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 03</div>
+        <div class="docket-main">
+          <h3>Contract Law</h3>
+          <div class="docket-body"><p>Drafting, negotiating, and enforcing commercial agreements, NDAs, licensing and franchise arrangements, and resolving breach-of-contract claims through negotiation or mediation.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 04</div>
+        <div class="docket-main">
+          <h3>Inheritance &amp; Estate Planning</h3>
+          <div class="docket-body"><p>Wills, trusts, and succession planning; probate and estate administration; contested inheritance matters; and cross-border family wealth transfers.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 05</div>
+        <div class="docket-main">
+          <h3>Banking &amp; Finance Law</h3>
+          <div class="docket-body"><p>Loan and credit agreements, project and corporate finance, debt restructuring, private equity and venture capital matters, and cross-border financing.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 06</div>
+        <div class="docket-main">
+          <h3>Fraud, Asset Recovery &amp; Financial Crime</h3>
+          <div class="docket-body"><p>Fraud investigations, asset tracing and fund recovery, cryptocurrency and Ponzi-scheme recovery, asset freezing orders, and anti-money-laundering compliance.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 07</div>
+        <div class="docket-main">
+          <h3>Dispute Resolution &amp; Litigation</h3>
+          <div class="docket-body"><p>Commercial, corporate, and shareholder disputes; arbitration and mediation; emergency injunctions; and enforcement of judgments across borders.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 08</div>
+        <div class="docket-main">
+          <h3>Tax &amp; Wealth Management</h3>
+          <div class="docket-body"><p>Corporate and property tax planning, estate and inheritance tax, wealth preservation, trust and fiduciary matters, and family office advisory services.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+      <div class="docket-item" data-open="false">
+        <div class="docket-no">No. 09</div>
+        <div class="docket-main">
+          <h3>Escrow &amp; Transaction Services</h3>
+          <div class="docket-body"><p>Escrow agreement drafting for real estate, M&amp;A, and cross-border transactions, including third-party fund management, purchase price holdbacks, and secure closing services.</p></div>
+        </div>
+        <div class="docket-toggle">+</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="litigation-band">
+  <div class="wrap">
+    <div class="grid">
+      <div class="photo">
+        <img src="assets/courtroom.jpg" alt="Hoffmann Law Firm attorneys in court proceedings">
+      </div>
+      <div class="copy">
+        <div class="eyebrow">Dispute Resolution</div>
+        <h3>Prepared for the <span class="accent">courtroom</span>, built to avoid it.</h3>
+        <p>Most matters resolve at the negotiating table — but when a dispute has to be argued before a judge, our clients get the same attention to detail and command of the facts either way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <img class="about-watermark" src="assets/emblem.png" alt="" aria-hidden="true">
+  <div class="wrap grid">
+    <div>
+      <p class="lede">Every client works directly with Judy — not a rotating cast of associates.</p>
+      <img class="about-inset" src="assets/reception-desk.jpg" alt="Hoffmann Law Firm reception">
+    </div>
+    <div class="notes">
+      <div class="note">
+        <h4>Direct access to counsel</h4>
+        <p>You speak with the person handling your matter, not a case manager. That means faster answers and no surprises.</p>
+      </div>
+      <div class="note">
+        <h4>Discretion as standard</h4>
+        <p>Personal and business legal matters are handled in confidence, from the first consultation through resolution.</p>
+      </div>
+      <div class="note">
+        <h4>Rooted in Madrid</h4>
+        <p>Based in the heart of Madrid, with the local court experience and language fluency to represent clients effectively.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="office-banner">
+  <img src="assets/office-interior.jpg" alt="Hoffmann Law Firm office interior, Madrid">
+  <div class="wrap">
+    <div class="eyebrow">Our Offices</div>
+    <h2>Step inside <span class="accent">Hoffmann Law Firm</span>, Madrid.</h2>
+    <p>A private, discreet setting for the conversations that matter most — steps from the city center, built for focused, confidential work.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Ready to talk through <span class="accent">your matter?</span></h2>
+    </div>
+    <div class="contact-details">
+      <div class="row">
+        <div class="label">Email</div>
+        <a class="value" href="mailto:info@judyhoffmann.com">info@judyhoffmann.com</a>
+      </div>
+      <div class="row">
+        <div class="label">Phone / WhatsApp</div>
+        <a class="value" href="https://wa.me/34603364865">+34 603 36 48 65</a>
+      </div>
+      <div class="row">
+        <div class="label">Address</div>
+        <div class="value">Amador de los Ríos 11, 28010 Madrid, ES</div>
+      </div>
+      <div class="row">
+        <div class="label">Website</div>
+        <a class="value" href="https://www.judyhoffmann.com" target="_blank" rel="noopener">www.judyhoffmann.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand"><img src="assets/emblem.png" alt="Hoffmann Law Firm emblem"> Hoffmann Law Firm</div>
+    <div class="flinks">
+      <a href="#practice">Practice</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.judyhoffmann.com" target="_blank" rel="noopener">judyhoffmann.com</a>
+    </div>
+    <div class="fnote">&copy; 2026 Hoffmann Law Firm.</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.docket-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.docket-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  const revealTargets = document.querySelectorAll('.pillars-grid, .docket-list, .about, .contact');
+  revealTargets.forEach(el => el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealTargets.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
